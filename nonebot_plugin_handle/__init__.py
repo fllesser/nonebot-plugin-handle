@@ -88,15 +88,16 @@ matcher_handle = on_alconna(
     priority=13,
 )
 matcher_hint = on_alconna(
-    "提示",
+    "handle_hint",
+    aliases=("提示", "猜成语提示"),
     rule=game_is_running,
     use_cmd_start=True,
     block=True,
     priority=13,
 )
 matcher_stop = on_alconna(
-    "结束",
-    aliases=("结束游戏", "结束猜成语", "stophandle"),
+    "handle_stop",
+    aliases=("结束", "结束游戏", "结束猜成语"),
     rule=game_is_running,
     use_cmd_start=True,
     block=True,
