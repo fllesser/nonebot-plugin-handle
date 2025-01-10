@@ -84,7 +84,7 @@ handle_alc = Alconna(
 matcher_handle = on_alconna(
     handle_alc,
     aliases=("猜成语",),
-    rule=game_not_running
+    rule=game_not_running,
     use_cmd_start=True,
     block=True,
     priority=13,
