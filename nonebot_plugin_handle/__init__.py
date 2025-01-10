@@ -8,6 +8,8 @@ from nonebot.matcher import Matcher
 from nonebot.params import Depends, EventToMe, RegexDict
 from nonebot.plugin import PluginMetadata, inherit_supported_adapters
 from nonebot.utils import run_sync
+from nonebot.permission import SUPERUSER
+from nonebot.adapters.onebot.v11 import GROUP_ADMIN, GROUP_OWNER
 
 require("nonebot_plugin_alconna")
 require("nonebot_plugin_uninfo")
@@ -82,10 +84,11 @@ handle_alc = Alconna(
 matcher_handle = on_alconna(
     handle_alc,
     aliases=("猜成语",),
-    rule=game_not_running,
+    rule=game_not_running & is_not_in_disable_group
     use_cmd_start=True,
     block=True,
     priority=13,
+    permission=SUPERUSER | GROUP_ADMIN | GROUP_OWNER
 )
 matcher_hint = on_alconna(
     "handle_hint",
